@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 import type { IMovieDetails } from "../../types";
@@ -28,23 +28,29 @@ export async function getServerSideProps(context) {
 
 export default function Home({ movie }: IProps) {
   return (
-    <div>
-      <h1 className="font-bold text-2xl">{movie.title}</h1>
-      <p className="mb-4">
-        <span className="font-bold">release_date:</span> {movie.release_date}
-      </p>
-      <p className="mb-4">
-        <span className="font-bold">runtime:</span> {movie.runtime}
-      </p>
-      <p className="mb-4">
-        <span className="font-bold">overview:</span> {movie.overview}
-      </p>
-      <p className="mb-4">
-        <span className="font-bold">budget:</span> {movie.budget}
-      </p>
-      <p className="mb-4">
-        <span className="font-bold">revenue:</span> {movie.revenue}
-      </p>
-    </div>
+    <>
+      <Head>
+        <title>{movie.title}</title>
+        <meta name="description" content={movie.overview} />
+      </Head>
+      <div>
+        <h1 className="font-bold text-2xl">{movie.title}</h1>
+        <p className="mb-4">
+          <span className="font-bold">release_date:</span> {movie.release_date}
+        </p>
+        <p className="mb-4">
+          <span className="font-bold">runtime:</span> {movie.runtime}
+        </p>
+        <p className="mb-4">
+          <span className="font-bold">overview:</span> {movie.overview}
+        </p>
+        <p className="mb-4">
+          <span className="font-bold">budget:</span> {movie.budget}
+        </p>
+        <p className="mb-4">
+          <span className="font-bold">revenue:</span> {movie.revenue}
+        </p>
+      </div>
+    </>
   );
 }
