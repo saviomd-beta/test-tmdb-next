@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 import MovieSearchForm from "../components/MovieSearchForm";
@@ -17,7 +18,6 @@ export async function getServerSideProps(context) {
     const { results } = await fetchTmdb({ path, queryString });
     movies = results;
   }
-
   return {
     props: {
       movies,
@@ -32,7 +32,9 @@ export default function Home({ movies }: IProps) {
       <ul>
         {movies.map(({ id, overview, title }: IMovieDetails) => (
           <li className="border mb-4 p-4 rounded" key={id}>
-            <h2 className="font-bold text-xl">{title}</h2>
+            <h2 className="font-bold text-xl">
+              <Link href={`/movie/${id}`}>{title}</Link>
+            </h2>
             <div>{overview}</div>
           </li>
         ))}
