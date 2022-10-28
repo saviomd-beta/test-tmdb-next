@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 import MovieSearchForm from "../components/MovieSearchForm";
 import type { IMovieDetails } from "../types";
